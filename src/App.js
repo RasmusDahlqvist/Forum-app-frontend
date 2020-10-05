@@ -4,8 +4,10 @@ import messageService from './services/messages'
 //import LoginForm from './components/LoginForm'
 import loginService from './services/login'
 import signupService from './services/signup'
-
 import Signup from './components/Signup'
+import Notication from './components/Notification'
+import './App.css'
+import axios from 'axios'
 
 
 
@@ -17,13 +19,13 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  
+  const [information, setInformation] = useState('')
+ 
 
   useEffect(() => {
     messageService
       .getAll().then(initialMessages => {
       setMessages( initialMessages )
-      console.log('lol', initialMessages)
     })
   }, [])
 
@@ -40,22 +42,24 @@ const App = () => {
 
     // tä toimiii. Pitää vaa suunitella käyttöliitymää. 
     window.localStorage.removeItem('loggedMessageappUser')
-    
+    setUser(null)
     console.log('<3')
   }
 
   const logoutButton = () => {
     return(
-      <button onClick={logout}>logout</button>
+      <button className="logoutButton" onClick={logout}>LOG OUT</button>
     )
   }
 
   const loginForm = () => {
       return(
-    <form onSubmit={handleLogin}>
+    <form className="loginform" onSubmit={handleLogin}>
+      <p id="logintext" >Log in</p>
                 <div>
-                    username
+                    <p className="formtext">username</p>
                     <input
+                    className="input"
                     type="text"
                     value={username}
                     name="Username"
@@ -63,7 +67,7 @@ const App = () => {
                     />
                     </div>
                     <div>
-                        password
+                    <p className="formtext">password</p>
                         <input
                         type="password"
                         value={password}
@@ -71,7 +75,7 @@ const App = () => {
                         onChange={({ target }) => setPassword(target.value)}
                         />
                 </div>
-                <button type="submit">login</button>
+                <button className="loginButton" type="submit">LOG IN</button>
 
 
             </form>
@@ -84,12 +88,12 @@ const App = () => {
 
       const messageForm = () => {
         return(
-          <form onSubmit={addMessage}>
-          <input
+          <form className="messageform" onSubmit={addMessage}>
+          <textarea rows="8" cols="50" placeholder="Type a new message.."
           value={newMessage}
           onChange={handleMessageChange}
           />
-          <button type="submit">save</button>
+          <button className="postButton" type="submit">CREATE POST</button>
         </form>
         )
       }
@@ -97,27 +101,30 @@ const App = () => {
   const handleLogin = async (event) => {
     event.preventDefault()
     console.log('loggin in with', username, password)
-    try {
-      const user = await loginService.login({
-        username, password,
-      })
-
-      window.localStorage.setItem(
-        'loggedMessageappUser', JSON.stringify(user)
-      )
-      messageService.setToken(user.token)
-      setUser(user)
-      setUsername(username)
-      setPassword(password)
-
-    } catch(e) {
-      console.log('wrong credentials')
-    }
-  }
-
+    if(username.length > 0 && password.length > 0) 
+    {
+      try {
+        const user = await loginService.login({
+          username, password,
+        })
   
+        window.localStorage.setItem(
+          'loggedMessageappUser', JSON.stringify(user)
+        )
+        messageService.setToken(user.token)
+        setUser(user)
+        setUsername(username)
+        setPassword(password)
+  
+      } catch(e) {
+        alert('Wrong username or password')
+        console.log('wrong credentials')
+      }
 
- 
+    } else { alert('Username or password was empty')}
+   
+   
+  }
 
   const addMessage = (event) => {
     event.preventDefault()
@@ -125,6 +132,7 @@ const App = () => {
     const messageObject = {
       content: newMessage,
       date: new Date().toISOString(),
+      likes: 0,
       id: messages.length +1,
 
     }
@@ -140,30 +148,39 @@ const App = () => {
     setNewMessage(event.target.value)
   }
 
+ 
+
   return (
     <div>
-      <h2>forum</h2>
-      
-        {logoutButton()}
+      <h1>APPNAME</h1>
+    
+        
 
-        {user == null ? loginForm() : 
+  {user == null ? <div> {loginForm()} <Signup/> </div> : 
         <div>
-          <p>{user.username}</p>
+          <p id="user" >Hello, {user.username}</p>
           {messageForm()}
+          {logoutButton()}
           </div>
           }
-
-        <Signup/>
-          <ul>
-            {messages.map(message => 
-          <li key={message.id}>
-           <p>{message.content}</p> 
-            <p>{message.author}</p>
-          </li>
+      
+       
+        {messages.map(message =>
+        
+          <Message
+            
+            key={message.id}
+            message={message}
+           
+            
+            
+          />
         )}
-      </ul>
+    
+   
       
     </div>
+    
   )
 }
 

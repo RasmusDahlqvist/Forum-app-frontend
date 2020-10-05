@@ -1,38 +1,263 @@
-.App {
-  text-align: center;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+body {
+  margin: 0;
+  background-color: #ffeadb;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  padding-left: 40px;
+  padding-top: 15px;
+  width:100%;
+  font-family: 'Roboto', sans-serif;
+  background: #ff9a76;
+  height: 60px;
+  margin-top: 0;
+  font-weight: bold;
+  border-top: 30px solid #679b9b;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+#usernametext {
+font-size: small;
+}
+#datetext {
+  font-size: small;
+  }
+
+p {
+  font-family: sans-serif;
+}
+#logintext {
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#signintext {
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.header {
+  padding: 10px;
+  background: #ff9a76;
+  font-size: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+
+}
+
+.messageStyle {
+  background: #ffffff;
+  
+  border-width: 2px;
+  border-style: solid;
+  border-color:#f7c5a8;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  width: 500px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+
+}
+
+.logoutButton {
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: #685454;
+  position: absolute;
+  margin: 20px;
+  left: 800px; 
+  top: 300px;
+}
+
+button {
+  border-width: 2px;
+  border-style: solid;
+  border-color:#252a34;
+  background-color: #679b9b;
+  width: 80px;
+  margin: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.formtext {
+  padding-left: 10px;
+  margin: 1px;
+}
+
+input {
+  margin-left: 10px;
+}
+
+.loginform {
+  width: 200px;
+  border-width: 2px;
+  border-style: solid;
+  background: #fff;
+  border-color:#f7c5a8;
+  position: absolute;
+  margin-bottom: 20px;
+  left: 800px;
+}
+
+.messageform {
+  position: relative;
+  top: 20px;
+  width: 500px;
+  
+  margin-bottom: 5px;
+  margin: 20px;
+}
+
+.signupform {
+  width: 200px;
+  background: #fff;
+  border-width: 2px;
+  border-style: solid;
+  
+  border-color: #f7c5a8;
+  position: absolute;
+  margin: 20px;
+  left: 782px;
+  top: 400px;
+}
+
+#user {
+  position: absolute;
+  left: 800px;
+  font-size: 50px;
+  margin: 20px;
+}
+
+.logoutbutton:hover {background-color: #3e8e41}
+
+.logoutbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.loginButton:hover {
+  background-color: #ff9a76;
+  transform: translateY(2px);
+  box-shadow: 0px 1px 10px #ff9a76;}
+
+
+
+.signupButton:hover {
+  background-color: #ff9a76;
+  transform: translateY(2px);
+  box-shadow: 0px 1px 10px #ff9a76;
+}
+
+.logoutButton:hover {
+  background-color: #ff9a76;
+  transform: translateY(2px);
+  box-shadow: 0px 1px 10px #ff9a76;
+}
+
+.postButton:hover {
+  background-color: #ff9a76;
+  transform: translateY(2px);
+  box-shadow: 0px 1px 10px #ff9a76;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .loginform {
+    width: 200px;
+    border-width: 2px;
+    border-style: solid;
+    background: #fff;
+    border-color:#f7c5a8;
+    position: relative;
+    margin: 20px;
+    left: 5px;
+    
+  }
+
+  .signupform {
+    width: 200px;
+    background: #fff;
+    border-width: 2px;
+    border-style: solid;
+    
+    border-color: #f7c5a8;
+    position: relative;
+    margin: 20px;
+    left:5px;
+    top:10px;
+  }
+  .logoutButton {
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f7c5a8;
+    position: relative;
+    margin: 20px;
+    left: 225px; 
+    top: -80px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+@media only screen and (max-width: 500px) {
+
+  .loginform {
+    width: 200px;
+    border-width: 2px;
+    border-style: solid;
+    background: #fff;
+    border-color:#f7c5a8;
+    position: relative;
+    margin: 20px;
+    left: 5px;
+    
   }
-  to {
-    transform: rotate(360deg);
+
+  .signupform {
+    width: 200px;
+    background: #fff;
+    border-width: 2px;
+    border-style: solid;
+    
+    border-color: #f7c5a8;
+    position: relative;
+    margin: 20px;
+    left:5px;
+    top:10px;
   }
+
+  h1 {
+    padding-left: 40px;
+    padding-top: 15px;
+    width:500px;
+    font-family: 'Roboto', sans-serif;
+    background: #ff9a76;
+    height: 60px;
+    margin-top: 0;
+    font-weight: bold;
+    border-top: 30px solid #679b9b;
+  }
+  .logoutButton {
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: #685454;
+    position: relative;
+    margin: 20px;
+    left: 225px; 
+    top: -80px;
+  }
+
 }
