@@ -1,13 +1,15 @@
 FORUM APP 
+
 Mobile friendly Reddit like app for sending messages and reading them. It uses React in front-end and Node.js and MongoDB on server side.
 
 MOTIVATION
+
 To become better web developer. 
  
- SCREENSHOTS
+ 
+SCREENSHOTS
 
-
-
+<img width="1440" alt="Näyttökuva 2020-10-5 kello 19 00 06" src="https://user-images.githubusercontent.com/27028743/95215305-83895a00-07f9-11eb-8c01-e1ce0a355d05.png">
 
 
 
